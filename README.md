@@ -43,3 +43,13 @@ Go to the Android app and type in the ip address that we looked at before in the
 ### selecting the light mode
 
 Select the light mode based on the lists provided, but *remember to turn off the lights when you're done!*
+
+## instructions for replication
+
+The raspberry pi is an incredibly versatile machine. It's low cost and highly efficient. It can run headless on a *full* desktop version of Linux. Certian boards have bluetooth connectivity and wifi chip *built in*. I love this machine with a passion, and I wanted to explore what the pi could do for me. It hasn't let me down yet.
+
+Our objectives are relatively simple, and can be read in the [requirements](https://github.com/moshulu/sno/wiki/Requirements).
+
+Our design can be seen in the [design document](https://github.com/moshulu/sno/wiki/Design-Document).
+
+Working test plans can be seen in the [wiki](https://github.com/moshulu/sno/wiki/Test-Plan).
