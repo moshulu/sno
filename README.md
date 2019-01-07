@@ -80,6 +80,13 @@ Make sure your soldering is covered, and do it in a place that you're okay with 
 
 ### Installing necessary libraries
 
+Enable I2C by typing in the terminal:
+
+```
+sudo raspi-config
+```
+Enable I2C. The prompt will ask to reboot. Do so now.
+
 To control NeoPixels, I used a python library called Adafruit CircuitPython NeoPixel found [here](https://github.com/adafruit/Adafruit_CircuitPython_NeoPixel). It's important to note that the library depends on Adafruit CircuitPython, which can be found [here](https://github.com/adafruit/circuitpython).
 
 ### First test
