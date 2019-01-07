@@ -1,30 +1,30 @@
 # sno
-framework for neopixel lightstrips to be controlled by an apache webserver on raspberry pi via php
+Framework for NeoPixel lightstrips to be controlled by an Apache2 Webserver on a Raspberry Pi B+ via PHP.
 
-stay up to date with the newest changes! check out the [changelog](CHANGELOG.md)
+Stay up to date with the newest changes! Check out the [changelog](CHANGELOG.md)
 
-## instructions for use by user
-### setup
-connect raspberry pi to mobile hotspot only. If the raspberry pi was previously connected to a wifi/ethernet connection, edit /etc/wpa_supplicant/wpa_supplicant.conf to only include the mobile hotspot's credentials. Now, whenever the pi is powered on, it looks for that network and auto connects.
+## Instructions for Use by User
 
-open a terminal using
+### Setup
+Connect raspberry pi to mobile hotspot only. If the raspberry pi was previously connected to a wifi/ethernet connection, edit /etc/wpa_supplicant/wpa_supplicant.conf to only include the mobile hotspot's credentials. Now, whenever the pi is powered on, it looks for that network and auto connects.
+
+Open a terminal and type:
 
 ```
 ifconfig
 ```
 
-take a note of where it says "inet" under the section labeled
+Take a note of where it says "inet" under the section labeled
 
 ```
 wlan0
 ```
 
-the number in question should look something like "172.16.123.12." this is the ip address of the raspberry pi. it's important, and we'll use this later.
-
+The number in question should look something like "172.16.123.12." This is the ip address of the raspberry pi. It's important, and we'll use this later.
 
 ### connecting to the raspberry pi
 
-##### using browser
+##### Using the Browser
 
 Go to the browser of your choice and type in:
 
@@ -97,5 +97,72 @@ sudo python3 neopixel_simpletest.py
 Congratulations!
 
 If you get an error, make sure you have python3 installed. Make sure your libraries were installed correctly. Check your wiring again (that can get confusing).
+
+### installing the webserver
+
+Installing a webserver is relatively easy. Type:
+
+```
+sudo apt-get update
+sudo apt-get upgrade
+sudo apt-get install apache2 -y
+```
+
+Then, install php7.0:
+
+```
+sudo apt-get php
+```
+
+Test out the webserver by going to "http://localhost" or "http://<the ip address of the raspberry pi>/. It should appear with the apache2 page saying the webserver is working. If you want a hostname to call your pi, to connect to something fancier, I suggest following [this](https://www.dexterindustries.com/howto/change-the-hostname-of-your-pi/) tutorial. For some reason, I was having trouble connecting directly to the pi's hostname when testing the webserver on the LAN on a mobile phone, but I got it working using the ip address (using the hostname on a PC worked flawlessly, oddly enough).
+
+On the pi's side, everything will be installed under "/var/www/html".
+
+### enabling sno
+
+We're almost there! Type:
+
+```
+cd /var/www
+git clone https://github.com/moshulu/sno
+```
+
+This clones this repository into the file system, so the webserver can read it. It should automatically set the homepage as index.php instead of index.html.
+
+Remember when we installed the NeoPixel CircuitPython library, and we said that commands must be run as the root user? Well, we've gotta give permissions to users that connect to the webserver to run commands with "sudo" in them!
+
+Type in a command prompt:
+
+```
+sudo visudo
+```
+
+...and all the way at the bottom of the file type in:
+
+```
+www-data ALL = NOPASSWD: ALL
+```
+
+That should do it.
+
+### controlling the lightstrip with the webserver
+
+Check that you have all of these things done:
+- Hotspot enabled
+- Pi connected to the hotspot
+
+Now you can go to the sno website and try to test the lightstrips with the scripts provided in this repository. Everything is powered by PHP $\_GET calls, which execute python scripts using the NeoPixel library.
+
+
+
+
+
+
+
+
+
+
+
+
 
 
