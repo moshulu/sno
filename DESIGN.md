@@ -19,3 +19,9 @@ One great thing about this design is that it can *absolutely* be scaled up to in
 [This is the LAN network diagram](https://imgur.com/a/mTQ3qrB).
 
 The LAN network diagram is self-explanatory. It's important to note that with this configuration, the mobile device will retain internet capabilities *and also* create a LAN with the Pi.
+
+### Snowboard Circuit
+
+[This is the snowboard circuit diagram](https://imgur.com/a/U7keSej).
+
+This is an idea of what the snowboard could look like. I decided to do it this way because NeoPixel light strips don't curve and it's way easier to program if the neopixels are in a "line" rather than seperate strips (this also frees GPIO pins).
