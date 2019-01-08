@@ -1,7 +1,7 @@
 # sno
 Framework for NeoPixel lightstrips to be controlled by an Apache2 Webserver on a Raspberry Pi B+ via PHP.
 
-Stay up to date with the newest changes! Check out the [changelog](CHANGELOG.md)
+Stay up to date with the newest changes! Check out the [changelog](CHANGELOG.md).
 
 ## Instructions for Use by User
 
@@ -48,7 +48,7 @@ Select the light mode based on the lists provided, but *remember to turn off the
 
 The raspberry pi is an incredibly versatile machine. It's low cost and highly efficient. It can run headless on a *full* desktop version of Linux. Certian boards have bluetooth connectivity and wifi chip *built in*. I love this machine with a passion, and I wanted to explore what the pi could do for me. It hasn't let me down yet.
 
-Our objectives are relatively simple, and can be read in the [requirements](https://github.com/moshulu/sno/wiki/Requirements). Our design can be seen in the [design document](https://github.com/moshulu/sno/wiki/Design-Document). Working test plans can be seen in the [wiki](https://github.com/moshulu/sno/wiki/Test-Plan). MUCH more information about how I set everything up is in those documents, along with wiring diagrams, noted vulnerabilities, and constraints.
+Our objectives are relatively simple, and can be read in the [requirements](https://github.com/moshulu/sno/wiki/Requirements). Our design can be seen in the [design document](DESIGN.md). Working test plans can be seen in the [wiki](https://github.com/moshulu/sno/wiki/Test-Plan). MUCH more information about how I set everything up is in those documents, along with wiring diagrams, noted vulnerabilities, and constraints.
 
 ##### Decisions I made
 
@@ -58,7 +58,7 @@ I ended up connecting the raspberry pi to the mobile device's hotspot (thus crea
 
 ### Hardware setup
 
-Read the [design document](https://github.com/moshulu/sno/wiki/Design-Document) for a more technical description of what I did, and wiring diagrams.
+Read the [design document](DESIGN.md) for a more technical description of what I did, and wiring diagrams.
 
 Wire up the NeoPixel strip first. To do that, you need
 - rosin core solder **DO NOT USE ANYTHING ELSE**
@@ -70,7 +70,7 @@ Wire up the NeoPixel strip first. To do that, you need
 
 NeoPixel light strips come with GND, 5V, Din, and DGND wires. I wanted to connect the 5V and GND to a breadboard to free up space on the pi's GPIO pins, so I can have space for more lightstrips in the future. I connected the Din and DGND directly to the raspberry pi's GPIO pins. In my case I used a pi 3B+, and followed this diagram https://raw.githubusercontent.com/splitbrain/rpibplusleaf/master/rpiblusleaf.png
 
-I then set up and powered the breadboard. Check the [design document](https://github.com/moshulu/sno/wiki/Design-Document) to see how I did that.
+I then set up and powered the breadboard. Check the [design document](DESIGN.md) to see how I did that.
 
 After soldering and making sure that the soldering was covered by electrical tape/wire nuts, I attached the 5V and GND to the breadboard, the Din to the GPIO pin of my choice, and the DGND to a GND pin on the pi. I think I can connect a DGND to a GND on the breadboard, but I didn't want to take any chances on my first go-round.
 
@@ -121,7 +121,7 @@ Then, install php7.0:
 sudo apt-get php
 ```
 
-Test out the webserver by going to "http://localhost" or "http://the ip address of the raspberry pi/". It should appear with the apache2 page saying the webserver is working. If you want a hostname to call your pi, to connect to something fancier, I suggest following [this](https://www.dexterindustries.com/howto/change-the-hostname-of-your-pi/) tutorial. For some reason, I was having trouble connecting directly to the pi's hostname when testing the webserver on the LAN on a mobile phone, but I got it working using the ip address (using the hostname on a PC worked flawlessly, oddly enough).
+Test out the webserver by going to "http://localhost" or "http://theipaddressoftheraspberrypi/". It should appear with the apache2 page saying the webserver is working. If you want a hostname to call your pi, to connect to something fancier, I suggest following [this](https://www.dexterindustries.com/howto/change-the-hostname-of-your-pi/) tutorial. For some reason, I was having trouble connecting directly to the pi's hostname when testing the webserver on the LAN on a mobile phone, but I got it working using the ip address (using the hostname on a PC worked flawlessly, oddly enough).
 
 On the pi's side, everything will be installed under "/var/www/html".
 
